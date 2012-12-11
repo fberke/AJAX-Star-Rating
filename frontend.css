@@ -1,0 +1,189 @@
+/*  styles for the unit rater
+--------------------------------------------------------- 
+ryan masuga, masugadesign.com
+ryan@masugadesign.com 
+Licensed under a Creative Commons Attribution 3.0 License.
+http://creativecommons.org/licenses/by/3.0/
+See readme.txt for full credit details.
+--------------------------------------------------------- */
+
+.ratingblock14,
+.ratingblock20,
+.ratingblock24 {
+	display: block;
+	/*border-bottom: 1px solid #999;*/
+	padding-bottom: 8px;
+	margin-bottom: 8px;
+}
+
+.loading {
+	height: 20px;
+	background: url('./images/working.gif') 50% 50% no-repeat;
+}
+	
+.ratingblock14 ul,
+.ratingblock20 ul,
+.ratingblock24 ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	/*height: 20px;*/
+	position: relative;
+	/*background: url('./images/stars20.png') top left repeat-x;*/		
+}
+.ratingblock14 ul {
+	height: 14px;
+	background: url('./images/stars14.png') top left repeat-x;		
+}
+.ratingblock20 ul {
+	height: 20px;
+	background: url('./images/stars20.png') top left repeat-x;		
+}
+.ratingblock24 ul {
+	height: 24px;
+	background: url('./images/stars24.png') top left repeat-x;		
+}
+
+.ratingblock14 ul li,
+.ratingblock20 ul li,
+.ratingblock24 ul li {
+    text-indent: -9000px;
+	padding: 0px;
+	margin: 0px;
+	/*\*/
+	float: left;
+	/* */
+}
+
+.ratingblock14 ul li a,
+.ratingblock20 ul li a,
+.ratingblock24 ul li a {
+	outline: none;
+	display: block;
+	/*width: 20px;*/
+	/*height: 20px;*/
+	text-decoration: none;
+	text-indent: -9000px;
+	z-index: 50;
+	position: absolute;
+	padding: 0px;
+}
+.ratingblock14 ul li a {
+	width: 14px;
+	height: 14px;
+}
+.ratingblock20 ul li a {
+	width: 20px;
+	height: 20px;
+}
+.ratingblock24 ul li a {
+	width: 24px;
+	height: 24px;
+}
+
+.ratingblock14 ul li a:hover,
+.ratingblock20 ul li a:hover,
+.ratingblock24 ul li a:hover {
+	/*background: url('./images/stars20.png') left center;*/
+	z-index: 2;
+	left: 0px;
+}
+.ratingblock14 ul li a:hover {
+	background: url('./images/stars14.png') left center;
+}
+.ratingblock20 ul li a:hover {
+	background: url('./images/stars20.png') left center;
+}
+.ratingblock24 ul li a:hover {
+	background: url('./images/stars24.png') left center;
+}
+
+.ratingblock14 ul a.r1-unit {left: 0px;}
+.ratingblock14 ul a.r1-unit:hover {width:14px;}
+.ratingblock14 ul a.r2-unit {left:14px;}
+.ratingblock14 ul a.r2-unit:hover {width: 28px;}
+.ratingblock14 ul a.r3-unit {left: 28px;}
+.ratingblock14 ul a.r3-unit:hover {width: 42px;}
+.ratingblock14 ul a.r4-unit {left: 42px;}	
+.ratingblock14 ul a.r4-unit:hover {width: 56px;}
+.ratingblock14 ul a.r5-unit {left: 56px;}
+.ratingblock14 ul a.r5-unit:hover {width: 70px;}
+.ratingblock14 ul a.r6-unit {left: 70px;}
+.ratingblock14 ul a.r6-unit:hover {width: 84px;}
+.ratingblock14 ul a.r7-unit {left: 84px;}
+.ratingblock14 ul a.r7-unit:hover {width: 98px;}
+.ratingblock14 ul a.r8-unit {left: 98px;}
+.ratingblock14 ul a.r8-unit:hover {width: 112px;}
+.ratingblock14 ul a.r9-unit {left: 112px;}
+.ratingblock14 ul a.r9-unit:hover {width: 126px;}
+.ratingblock14 ul a.r10-unit {left: 126px;}
+.ratingblock14 ul a.r10-unit:hover {width: 140px;}
+
+.ratingblock20 ul a.r1-unit {left: 0px;}
+.ratingblock20 ul a.r1-unit:hover {width:20px;}
+.ratingblock20 ul a.r2-unit {left:20px;}
+.ratingblock20 ul a.r2-unit:hover {width: 40px;}
+.ratingblock20 ul a.r3-unit {left: 40px;}
+.ratingblock20 ul a.r3-unit:hover {width: 60px;}
+.ratingblock20 ul a.r4-unit {left: 60px;}	
+.ratingblock20 ul a.r4-unit:hover {width: 80px;}
+.ratingblock20 ul a.r5-unit {left: 80px;}
+.ratingblock20 ul a.r5-unit:hover {width: 100px;}
+.ratingblock20 ul a.r6-unit {left: 100px;}
+.ratingblock20 ul a.r6-unit:hover {width: 120px;}
+.ratingblock20 ul a.r7-unit {left: 120px;}
+.ratingblock20 ul a.r7-unit:hover {width: 140px;}
+.ratingblock20 ul a.r8-unit {left: 140px;}
+.ratingblock20 ul a.r8-unit:hover {width: 160px;}
+.ratingblock20 ul a.r9-unit {left: 160px;}
+.ratingblock20 ul a.r9-unit:hover {width: 180px;}
+.ratingblock20 ul a.r10-unit {left: 180px;}
+.ratingblock20 ul a.r10-unit:hover {width: 200px;}
+
+.ratingblock24 ul a.r1-unit {left: 0px;}
+.ratingblock24 ul a.r1-unit:hover {width:24px;}
+.ratingblock24 ul a.r2-unit {left:24px;}
+.ratingblock24 ul a.r2-unit:hover {width: 48px;}
+.ratingblock24 ul a.r3-unit {left: 48px;}
+.ratingblock24 ul a.r3-unit:hover {width: 72px;}
+.ratingblock24 ul a.r4-unit {left: 72px;}	
+.ratingblock24 ul a.r4-unit:hover {width: 96px;}
+.ratingblock24 ul a.r5-unit {left: 96px;}
+.ratingblock24 ul a.r5-unit:hover {width: 120px;}
+.ratingblock24 ul a.r6-unit {left: 120px;}
+.ratingblock24 ul a.r6-unit:hover {width: 144px;}
+.ratingblock24 ul a.r7-unit {left: 144px;}
+.ratingblock24 ul a.r7-unit:hover {width: 168px;}
+.ratingblock24 ul a.r8-unit {left: 168px;}
+.ratingblock24 ul a.r8-unit:hover {width: 192px;}
+.ratingblock24 ul a.r9-unit {left: 192px;}
+.ratingblock24 ul a.r9-unit:hover {width: 216px;}
+.ratingblock24 ul a.r10-unit {left: 216px;}
+.ratingblock24 ul a.r10-unit:hover {width: 240px;}
+
+.ratingblock14 ul li.current-rating,
+.ratingblock20 ul li.current-rating,
+.ratingblock24 ul li.current-rating {
+	/*background: url('./images/stars20.png') left bottom;*/
+	position: absolute;
+	/*height: 20px;*/
+	display: block;
+	text-indent: -9000px;
+	z-index: 1;
+}
+.ratingblock14 ul li.current-rating {
+	background: url('./images/stars14.png') left bottom;
+	height: 14px;
+}
+.ratingblock20 ul li.current-rating {
+	background: url('./images/stars20.png') left bottom;
+	height: 20px;
+}
+.ratingblock24 ul li.current-rating {
+	background: url('./images/stars24.png') left bottom;
+	height: 24px;
+}
+
+.voted {color: #999;}
+.thanks {color: #36AA3D;}
+.static {color: #5D3126;}		
