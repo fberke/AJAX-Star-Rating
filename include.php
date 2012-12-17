@@ -46,8 +46,10 @@ function drawStarRating (
 	$tense = ($vars ['total_votes'] == 1) ? $ASR['VOTE'] : $ASR['VOTES']; // plural form votes/vote
 		
 	$rater = array();
-	if (!$ajax) $rater [] = "\n".'<div class="ratingblock'.$vars ['unitwidth'].'">';
-	$rater [] = '<div id="unit_long_'.$vars ['id'].'">';
+	if (!$ajax) {
+		$rater [] = "\n".'<div class="ratingblock'.$vars ['unitwidth'].'">';
+		$rater [] = '<div id="unit_long_'.$vars ['id'].'">';
+	}
 	$rater [] = '<ul id="unit_ul_'.$vars ['id'].'" class="unit-rating" style="width:'.$vars ['unitwidth'] * $vars ['units'].'px;">';
 	$rater [] = '<li class="current-rating" style="width:'.$ratingwidth.'px;">'.$ASR['CURRENT_RATING'].' '.$rating.'/'.$vars ['units'].'</li>';
 	
@@ -69,10 +71,13 @@ function drawStarRating (
 	}
 	if ($voted) $pclass = ' class="voted"';
 	$rater [] = '<p'.$pclass.'>'.$ASR['RATING'].' <strong> '.$rating.'</strong>/'.$vars ['units'].' ('.$vars ['total_votes'].' '.$tense.' '.$ASR['CAST'].') '.$staticNote.'</p>';
-	$rater [] = '</div>';
-	if (!$ajax) $rater [] = '</div>';
-	$rater [] = "\n\n";
-
+	
+	if (!$ajax) {
+		$rater [] = '</div>';
+		$rater [] = '</div>';
+		$rater [] = "\n\n";
+	}
+	
 	return join ("\n", $rater);
 }
 
