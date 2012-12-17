@@ -61,6 +61,9 @@ in Lepton; in WebsiteBaker please follow these steps:
 3. In WebsiteBaker backend open the 'Admin Tools' tab and click on 'Droplets'
 4. Create a new droplet named 'asr', paste the copied code to it and save
 
+NOTE THAT WITH EVERY UPDATE THE DROPLET WILL BE OVERWRITTEN IN LEPTON!
+IF YOU HAVE APPLIED MANUAL CHANGES PLEASE BACK UP YOUR DROPLET!
+
 
 Once you have both parts installed properly, just go and add the droplet to
 one of your pages. Possible parameters are:
