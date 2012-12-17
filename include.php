@@ -19,8 +19,9 @@ if (defined('WB_PATH')) {
 }
 // end include class.secure.php
 
-global $wb;
+include_once ('functions.php');
 
+global $wb;
 
 if (LANGUAGE_LOADED) {
 	if (file_exists (WB_PATH.'/modules/asr/languages/'.LANGUAGE.'.php')) {
@@ -75,32 +76,6 @@ function drawStarRating (
 	return join ("\n", $rater);
 }
 
-function getIP () {
-	$ip = 0; // just in case...
-	// Test if it is a shared client
-	if (!empty ($_SERVER ['HTTP_CLIENT_IP'])) {
-		$ip = $_SERVER ['HTTP_CLIENT_IP'];
-	// Is it a proxy address
-	} elseif (!empty ($_SERVER ['HTTP_X_FORWARDED_FOR'])) {
-		$ip = $_SERVER ['HTTP_X_FORWARDED_FOR'];
-	// Or get 'real' address
-	} else {
-		$ip = $_SERVER ['REMOTE_ADDR'];
-	}
-
-	return $ip;
-}
-
-
-function userHasVoted ($id, $ip) {
-	global $database;
-
-	$sql = "SELECT * FROM ".TABLE_PREFIX."mod_asr_blocked_ip WHERE ip_addr='".$ip."' AND rating_id = '".$id."' ";
-	$db = $database->query ($sql);
-
-	return (isset ($db)) ? ($db->numRows() > 0) : false;
-}
-
 
 if (isset ($_REQUEST['rating']) && isset ($_REQUEST['id']) && isset ($_REQUEST['ip']) && isset ($_REQUEST['units']) && isset ($_REQUEST['width'])) {
 	//getting the values
@@ -119,11 +94,10 @@ if (isset ($_REQUEST['rating']) && isset ($_REQUEST['id']) && isset ($_REQUEST['
 	
 	$ratings = $db->fetchRow();
 	
-	$voted = userHasVoted ($id_sent, $ip_sent);
+	$voted = userHasVoted ($id_sent, $ip_sent, 'mod_asr_blocked_ip');
 
 	$total_value = $ratings ['total_value']; // total number of rating added together and stored
 	$total_votes = $ratings ['total_votes']; // how many votes total
-	$tense = ($total_votes == 1) ? "vote" : "votes"; // plural form votes/vote
 	
 	//IP check when voting
 	if (!$voted) { //if the user hasn't yet voted, then vote normally...
@@ -133,8 +107,6 @@ if (isset ($_REQUEST['rating']) && isset ($_REQUEST['id']) && isset ($_REQUEST['
 			// checking to see if the first vote has been tallied
 			// or increment the current number of votes
 			$total_votes = ($total_value == 0) ? 0 : $total_votes + 1;
-			$tense = ($total_votes == 1) ? "vote" : "votes"; // plural form votes/vote
-	
 			
 			$update = "UPDATE ".TABLE_PREFIX."mod_asr_ratings SET total_votes='".$total_votes."', total_value='".$total_value."' WHERE id='".$id_sent."' ";
 			$database->query ($update);
@@ -167,16 +139,6 @@ if (isset ($_REQUEST['rating']) && isset ($_REQUEST['id']) && isset ($_REQUEST['
 } else {}
 
 
-function unblockIPs ($timeout) {
-	global $database;
-	
-	if ($timeout != -1) {
-		$gap = time () - ($timeout * 3600);
-		$sql = "DELETE FROM ".TABLE_PREFIX."mod_asr_blocked_ip WHERE timestamp <= '".$gap."' ";
-		$database->query ($sql);
-	}
-}
-
 function ratingBar (
 	$id,
 	$units = 5,
@@ -208,8 +170,8 @@ function ratingBar (
 
 	
 	// determine whether the user has voted, so we know how to draw the rating list
-	unblockIPs ($timeout);
-	$voted = userHasVoted ($id, $ip);
+	unblockIPs ($timeout, 'mod_asr_blocked_ip');
+	$voted = userHasVoted ($id, $ip, 'mod_asr_blocked_ip');
 	
 	
 	$vars = array (
