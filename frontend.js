@@ -255,10 +255,8 @@ document.getElementsBySelector = function(selector) {
 
 
 /*
-Page:           rating.js
-Created:        Aug 2006
 Last Mod:       Mar 11 2007
-Handles actions and requests for rating bars.	
+Handles actions and requests for ratings	
 --------------------------------------------------------- 
 ryan masuga, masugadesign.com
 ryan@masugadesign.com 
@@ -312,33 +310,28 @@ var xmlhttp
 	return(xmlhttplocal);
 }
 
-function sndReq(vote,id_num,ip_num,units,unitwidth) {
-	var theUL = document.getElementById('unit_ul_'+id_num); // the UL
-	
-	// switch UL with a loading div
-	theUL.innerHTML = '<div class="loading"></div>';
+function sndReq (id_num, ip_num, vote, rtype) {
 	var QueryStringStart = '?';
 	if (document.URL.match(/\?/)) { // does URL already have parameters?
 		// alert (document.URL);
 		QueryStringStart = '&'
 	}
-	xmlhttp.open('get', document.URL+QueryStringStart+'rating='+vote+'&id='+id_num+'&ip='+ip_num+'&units='+units+'&width='+unitwidth+'&a=1');
+	xmlhttp.open('get', document.URL+QueryStringStart+'id='+id_num+'&ip='+ip_num+'&rating='+vote+'&'+rtype+'=1&a=1');
+	// alert (document.URL+QueryStringStart+'id='+id_num+'&ip='+ip_num+'&rating='+vote+'&'+rtype+'=1&a=1');
 	xmlhttp.onreadystatechange = handleResponse;
 	xmlhttp.send(null);	
 }
 
 function handleResponse() {
-	if (xmlhttp.readyState == 4) { 
-		if (xmlhttp.status == 200) {
+	if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)) {
 			
 			var response = xmlhttp.responseText;
 			var update = new Array();
-			
+			//alert (response);
 			if(response.indexOf('|') != -1) {
 				update = response.split('|');
 				changeText(update[0], update[1]);
 			}
-		}
 	}
 }
 
@@ -374,11 +367,12 @@ var ratingAction = {
 			var theratingID = parameterList['id'];
 			var theVote = parameterList['rating'];
 			var theuserIP = parameterList['ip'];
-			var theunits = parameterList['units'];
-			var theunitWidth = parameterList['width'];
+			var theRatingType = '';
+			if (parameterList ['ald'] == 1) theRatingType = 'ald';
+			if (parameterList ['asr'] == 1) theRatingType = 'asr';
 			
-			//for testing alert('sndReq('+theVote+','+theratingID+','+theuserIP+','+theunits+')'); return false;
-			sndReq(theVote,theratingID,theuserIP,theunits,theunitWidth); return false;
+			//for testing alert('sndReq('+theratingID+', '+theuserIP+', '+theVote+', '+theRatingType+')'); //return false;
+			sndReq (theratingID, theuserIP, theVote, theRatingType); return false;
 		}
 	}
 	
