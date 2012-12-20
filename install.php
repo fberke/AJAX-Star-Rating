@@ -32,6 +32,8 @@ $query = "CREATE TABLE IF NOT EXISTS ".TABLE_PREFIX."mod_asr_ratings (
 		id VARCHAR(25) NOT NULL,
 		total_votes MEDIUMINT NOT NULL DEFAULT '0',
 		total_value INT NOT NULL DEFAULT '0',
+		units TINYINT NOT NULL DEFAULT '5',
+		unitwidth TINYINT NOT NULL DEFAULT '20',
 		PRIMARY KEY (id)
 		)";
 $database->query ($query);
