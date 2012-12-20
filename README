@@ -1,6 +1,6 @@
 AJAX Star Rating (ASR)
 
-An unobtrusive rating module for Lepton CMS and WebsiteBaker.
+An unobtrusive rating module for Lepton CMS and WebsiteBaker (not tested).
 
 The module's JavaScript is based on the work by Masuga Design,
 http://www.masugadesign.com/software/unobtrusive-ajax-star-rating-bar/
@@ -25,7 +25,7 @@ A very handy feature is to mark a rating as private so only members of your site
 are able to vote, even if the page that contains the rating is public. Private is
 off by default
 
-You can add or even turn existing rating bars in 'static' state which disables
+You can add (or even turn existing) rating bars in 'static' state which disables
 voting for everyone. Static is off by default.
 
 ASR comes with 3 different CSS presets: a small one with 14px stars, a medium sized
@@ -48,6 +48,13 @@ The last important thing: for each rating you have to set a unique ID. This ID
 may be up to 25 characters long, supporting just letters from a-z or A-Z (no
 umlauts, accents and whatsoever), numbers from 0-9, dash (-) and underscore (_).
 
+Note
+----
+
+ASR does not store every single vote, it only stores the totals. This means you
+cannot present any statistics displaying the actual ratings over time.
+I did so because I wanted to keep DB utilization low and make this module fast.
+
 Usage
 -----
 
@@ -55,7 +62,7 @@ Unlike most modules ASR is no page module - it is a snippet. Despite the differe
 name AJAX Star Rating can be installed like any other module.
 
 To work properly ASR comes packed with a Droplet which will be installed automatically
-in Lepton; in WebsiteBaker please follow these steps:
+in Lepton; if in WebsiteBaker this doesn't work, please follow these steps:
 1. Unpack ASR to you harddrive
 2. Open \install\asr.php with an editor and copy the entire code
 3. In WebsiteBaker backend open the 'Admin Tools' tab and click on 'Droplets'
