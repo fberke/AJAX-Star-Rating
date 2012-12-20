@@ -22,7 +22,7 @@ if (defined('WB_PATH')) {
 $module_directory = 'asr';
 $module_name = 'AJAX Star Rating';
 $module_function = 'snippet';
-$module_version = '0.3.2';
+$module_version = '0.3.4';
 $module_platform = '1.1.0';
 $module_author = 'fberke';
 $module_license = 'GNU GPL';
